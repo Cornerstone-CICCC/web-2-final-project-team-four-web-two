@@ -1,53 +1,70 @@
-<div class="form-grid"> 
-    <span>Contact Us</span>
-    <h1>Request a quote</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-    <label id="full-name"> <span>Full name</span>
-        <input type="text" name="full-name">
-    </label>
-    
-    <label id="phone-number"> <span>Phone number</span>
-        <input type="text" name="phone-number">
-    </label>
-    
-    <label id="select-service">
-        <span>Select service</span>
-        <select name="select-service" id="select-service">
-            <option value=""></option>
-            <option value="one-bedroom">One Bedroom Apartment</option>
-            <option value="window-cleaning">Window Cleaning</option>
-            <option value="residential-cleaning">Residential Cleaning</option>
-            <option value="construction-cleaning">Construction Cleaning</option>
-            <option value="commercial-cleaning">Commercial Cleaning</option>
-            <option value="two-bedroom">Two Bedroom Apartment</option>
-        </select>
-    </label>
-    
-    <label id="selec-time"><span>Select time</span>
-        <select name="select-time" id="select-time">
-            <option value=""></option>
-            <option value="07:00am">07:00am</option>
-            <option value="08:00am">08:00am</option>
-            <option value="09:00am">08:00am</option>
-            <option value="10:00am">10:00am</option>
-        </select>
-    </label>
+<section class="form-container">
+    <form id="quote-form" class="form-grid">
+        <div class="request-grid"> 
+            <span>Contact Us</span>
+            <h1>Request a quote</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <label id="full-name"> <span>Full name</span>
+                <input type="text" name="full-name">
+            </label>
+            
+            <label id="phone-number"> <span>Phone number</span>
+                <input type="text" name="phone-number">
+            </label>
+            
+            <label id="select-service">
+                <span>Select service</span>
+                <select name="select-service" id="select-service">
+                    <option value=""></option>
+                    <option value="one-bedroom">One Bedroom Apartment</option>
+                    <option value="window-cleaning">Window Cleaning</option>
+                    <option value="residential-cleaning">Residential Cleaning</option>
+                    <option value="construction-cleaning">Construction Cleaning</option>
+                    <option value="commercial-cleaning">Commercial Cleaning</option>
+                    <option value="two-bedroom">Two Bedroom Apartment</option>
+                </select>
+            </label>
+            
+            <label id="selec-time"><span>Select time</span>
+                <select name="select-time" id="select-time">
+                    <option value=""></option>
+                    <option value="07:00am">07:00am</option>
+                    <option value="08:00am">08:00am</option>
+                    <option value="09:00am">08:00am</option>
+                    <option value="10:00am">10:00am</option>
+                </select>
+            </label>
 
-    <label id="message-text"><span>Message</span>
-        <input type="text" name="message" placeholder="Type your message">
-    </label>
+            <label id="message-text"><span>Message</span>
+                <input type="text" name="message" placeholder="Type your message">
+            </label>
 
-    <label class="checkbox">
-        <input type="checkbox" id="accept-terms"> <span>I accept the <span class="terms-link">Terms</span></span>
-    </label>
-    
-    <button class="submit-btn">Submit</button>
+            <label class="checkbox">
+                <input type="checkbox" id="accept-terms"> <span>I accept the <span class="terms-link">Terms</span></span>
+            </label>
+            
+            <button class="submit-btn">Submit</button>
+        </div>
 
-    <img src="/src/assets/diana-cleaning-lady.png" alt="">
-
-</div>
+        <div class="img-container">
+            <img src="/src/assets/diana-cleaning-lady.png" alt="">
+        </div>
+    </form>
+</section>
 
 <style>
+    .form-container {
+        font-family: "Roboto";
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    
+    .request-grid {
+        display: flex;
+        flex-direction: column;
+    }
+    
     .terms-link {
         cursor: pointer;
         text-decoration: underline;
