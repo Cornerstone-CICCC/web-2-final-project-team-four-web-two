@@ -1,13 +1,57 @@
-<div class="request-quote"> 
+<div class="form-grid"> 
     <span>Contact Us</span>
     <h1>Request a quote</h1>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-    <input type="text" name="full-name">
-    <input type="text" name="phone-number">
-    <input type="text" name="select-service">
-    <input type="text" name="select-time">
-    <input type="text" name="message">
+    <label id="full-name"> <span>Full name</span>
+        <input type="text" name="full-name">
+    </label>
+    
+    <label id="phone-number"> <span>Phone number</span>
+        <input type="text" name="phone-number">
+    </label>
+    
+    <label id="select-service">
+        <span>Select service</span>
+        <select name="select-service" id="select-service">
+            <option value=""></option>
+            <option value="one-bedroom">One Bedroom Apartment</option>
+            <option value="window-cleaning">Window Cleaning</option>
+            <option value="residential-cleaning">Residential Cleaning</option>
+            <option value="construction-cleaning">Construction Cleaning</option>
+            <option value="commercial-cleaning">Commercial Cleaning</option>
+            <option value="two-bedroom">Two Bedroom Apartment</option>
+        </select>
+    </label>
+    
+    <label id="selec-time"><span>Select time</span>
+        <select name="select-time" id="select-time">
+            <option value=""></option>
+            <option value="07:00am">07:00am</option>
+            <option value="08:00am">08:00am</option>
+            <option value="09:00am">08:00am</option>
+            <option value="10:00am">10:00am</option>
+        </select>
+    </label>
 
-    <button class="submit-btn"></button>
+    <label id="message-text"><span>Message</span>
+        <input type="text" name="message" placeholder="Type your message">
+    </label>
+
+    <label class="checkbox">
+        <input type="checkbox" id="accept-terms"> <span>I accept the <span class="terms-link">Terms</span></span>
+    </label>
+    
+    <button class="submit-btn">Submit</button>
+
+    <img src="/src/assets/diana-cleaning-lady.png" alt="">
 
 </div>
+
+<style>
+    .terms-link {
+        cursor: pointer;
+        text-decoration: underline;
+        font-family:;
+    }
+
+</style>
