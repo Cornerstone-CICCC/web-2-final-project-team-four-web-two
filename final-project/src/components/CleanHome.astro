@@ -1,0 +1,115 @@
+---
+import { Image } from "astro:assets";
+import menCleanHomeImage from "../assets/suzu-clean-home-men.jpg";
+---
+
+<!-- suzuna - clean home component -->
+<div class="content-wrapper">
+  <div class="content-left-wrapper">
+    <h1>
+      <strong>
+        A Clean Home,
+        <br />A Happy Life,
+        <br />Let Us Handle The Dirty Work!
+      </strong>
+    </h1>
+    <p>
+      We develop innovative design solutions that enable our clients to enhance
+      their competitive advantage.
+    </p>
+    <div class="cta-aTags">
+      <a href="/quote" class="btn-request-quote">Request A Quote</a>
+      <a href="/" class="btn-learn-more">Learn More</a>
+    </div>
+  </div>
+  <div class="content-right-wrapper">
+    <Image
+      src={menCleanHomeImage}
+      alt="a men who is cleaning a home"
+      class="menCleanHomeImage"
+    />
+  </div>
+</div>
+
+<style>
+  :root {
+    --primary-color: #000;
+    --bg-color: #fff;
+  }
+
+  .content-wrapper {
+    display: flex;
+    margin: 3rem;
+    flex-direction: column;
+    background-color: var(--bg-color);
+    align-items: center;
+    justify-content: center;
+  }
+
+  .content-left-wrapper {
+    width: 100%;
+    height: auto;
+  }
+
+  .content-left-wrapper h1 {
+    font-size: 4rem;
+    font-weight: 700;
+  }
+
+  .content-left-wrapper p {
+    font-size: 1.25rem;
+    font-weight: 400;
+  }
+
+  .cta-aTags {
+    margin: 3rem 0;
+  }
+
+  .btn-request-quote {
+    text-decoration: none;
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 1rem;
+    margin-right: 1rem;
+    border-radius: 5px;
+    font-weight: 400;
+    transition: ease 0.2s;
+  }
+
+  .btn-request-quote:hover {
+    opacity: 0.8;
+  }
+
+  .btn-learn-more {
+    display: inline-block;
+    background-color: #fff;
+    color: var(--primary-color);
+    padding: 1rem;
+    border-radius: 5px;
+    border: 1px solid var(--primary-color);
+    text-decoration: none;
+    transition: ease 0.2s;
+  }
+
+  .menCleanHomeImage {
+    width: 100%;
+    height: auto;
+  }
+
+  /* responsive design */
+  @media (min-width: 1440px) {
+    .content-wrapper {
+      flex-direction: row;
+      margin: auto;
+      max-width: 2000px;
+    }
+
+    .content-left-wrapper {
+      padding: 0 2rem;
+    }
+
+    .content-right-wrapper {
+      max-width: 750px;
+    }
+  }
+</style>
