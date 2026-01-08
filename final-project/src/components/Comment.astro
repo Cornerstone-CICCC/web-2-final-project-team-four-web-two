@@ -1,0 +1,72 @@
+<div class="comment-container">
+    <form id="comment-form" class="comment-grid">
+        <label class="field">
+            <span>Full name</span>
+            <input type="text" name="userName" required>
+            </label>
+        <label class="field">
+            <span>Phone number</span>
+            <input type="text" name="userPhone" required>
+            </label>
+        <label id="message-text"><span>Comment</span>
+            <input type="text" name="comment">
+        </label>
+
+        <button class="request-btn">Request a quote</button>
+    </form>
+</div>
+
+<style>
+
+  .request-btn {
+        justify-self: start;
+        background-color: black;
+        color: white;
+        border-radius: 5px;
+        padding: 16px;
+        border: 1px solid black;
+        cursor: pointer;
+        width: fit-content;
+        transition: background-color 0.3s ease;
+    }
+
+    .request-btn:hover {
+        background-color: white;
+        color: black !important;
+    }
+
+</style>
+
+<script type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script type="text/javascript">
+  emailjs.init('GiZ-U-0hXodtELxuZ')
+</script>
+
+<script>
+    const btn = document.querySelector('.request-btn');
+
+    document.getElementById('comment-form')
+    .addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    btn.textContent = 'Sending...';
+
+    const serviceID = 'default_service';
+    const templateID = 'template_espiwog';
+
+    emailjs.sendForm(serviceID, templateID, this)
+        .then(() => {
+        btn.textContent = 'Sent successfully!';
+        alert('Your comment has been sent successfully!');
+        this.reset()
+        setTimeout(() => {
+            btn.textContent = "Submit"
+        }, 1500)
+        }, (err) => {
+        btn.textContent = 'Error. Try again.';
+        alert('Something went wrong. Please try again.' + JSON.stringify(err));
+        });
+    });
+</script>
