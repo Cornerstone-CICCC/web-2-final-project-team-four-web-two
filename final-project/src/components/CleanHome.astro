@@ -5,7 +5,7 @@ import menCleanHomeImage from "../assets/suzu-clean-home-men.jpg";
 
 <!-- suzuna - clean home component -->
 <div class="content-wrapper">
-  <div class="content-left-wrapper">
+  <div class="content-left">
     <h1>
       <strong>
         A Clean Home,
@@ -22,7 +22,7 @@ import menCleanHomeImage from "../assets/suzu-clean-home-men.jpg";
       <a href="/" class="btn-learn-more">Learn More</a>
     </div>
   </div>
-  <div class="content-right-wrapper">
+  <div class="content-right">
     <Image
       src={menCleanHomeImage}
       alt="a men who is cleaning a home"
@@ -39,24 +39,24 @@ import menCleanHomeImage from "../assets/suzu-clean-home-men.jpg";
 
   .content-wrapper {
     display: flex;
-    margin: 3rem;
+    /* margin: 3rem; */
     flex-direction: column;
     background-color: var(--bg-color);
     align-items: center;
     justify-content: center;
   }
 
-  .content-left-wrapper {
+  .content-left {
     width: 100%;
     height: auto;
   }
 
-  .content-left-wrapper h1 {
+  .content-left h1 {
     font-size: 4rem;
     font-weight: 700;
   }
 
-  .content-left-wrapper p {
+  .content-left p {
     font-size: 1.25rem;
     font-weight: 400;
   }
@@ -104,11 +104,11 @@ import menCleanHomeImage from "../assets/suzu-clean-home-men.jpg";
       max-width: 2000px;
     }
 
-    .content-left-wrapper {
+    .content-left {
       padding: 0 2rem;
     }
 
-    .content-right-wrapper {
+    .content-right {
       max-width: 750px;
     }
   }
