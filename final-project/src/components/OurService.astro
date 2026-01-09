@@ -60,8 +60,8 @@ const services = [
   </div>
   <div class="service-cards-grid">
     {
-      services.map((service) => (
-        <article class="service-card">
+      services.map((service, index) => (
+        <article class={`service-card ${index >= 3 ? "hidden-card" : ""}`}>
           <Image
             src={service.imageSrc}
             alt={service.imageDescription}
@@ -72,27 +72,15 @@ const services = [
         </article>
       ))
     }
-    <!-- {
-      services.map((service) => (
-        <article class="service-card">
-          <Image
-            src={service.imageSrc}
-            alt={service.imageDescription}
-            class="service-card-image"
-          />
-          <h3>{service.name}</h3>
-          <p>{service.serviceDescription}</p>
-        </article>
-      ))
-    } -->
   </div>
-  <button onclick="toggleCards()" class="btn-view-all">View All</button>
+  <button type="button" class="btn-view-all">View All</button>
 </div>
 
 <style>
   :root {
     --bg-color: #f7f7f7;
     --primary-color: #000;
+    --btn-hover-color: #f0f0f0;
   }
 
   .content-wrapper {
@@ -136,6 +124,10 @@ const services = [
     border-radius: 5px;
   }
 
+  .hidden-card {
+    display: none;
+  }
+
   .service-card-image {
     width: 100%;
     height: auto;
@@ -164,9 +156,7 @@ const services = [
   }
 
   .btn-view-all:hover {
-    background-color: var(--primary-color);
-    color: #fff;
-    opacity: 0.8;
+    background-color: var(--btn-hover-color);
   }
 
   /* desktop design */
@@ -180,10 +170,29 @@ const services = [
       grid-template-columns: repeat(3, 1fr);
       gap: 2rem;
     }
+
+    .service-card {
+      display: flex;
+    }
     .btn-view-all {
       display: none;
     }
   }
 </style>
 
-<script></script>
+<script>
+  const btnViewAll = document.querySelector(
+    ".btn-view-all",
+  ) as HTMLButtonElement | null;
+  const hiddenCards = document.querySelectorAll(".hidden-card");
+
+  if (btnViewAll) {
+    btnViewAll.addEventListener("click", (e) => {
+      e.preventDefault();
+      hiddenCards.forEach((hiddenCard) => {
+        hiddenCard.classList.remove("hidden-card");
+      });
+      btnViewAll.style.display = "none";
+    });
+  }
+</script>
