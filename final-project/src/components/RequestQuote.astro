@@ -1,0 +1,217 @@
+<section class="form-container">
+    <div class="inputs-container">
+
+        <div class="quote-wrapper">
+            <div class="title-wrapper">
+                <span>Contact Us</span>
+                <h1>Request a quote</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            </div>
+            
+            <form id="quote-form" class="form-grid">
+                <label class="field">
+                    <span>Full name</span>
+                    <input type="text" name="userName" required>
+                </label>
+                    
+                <label class="field">
+                    <span>Phone number</span>
+                    <input type="text" name="userPhone" required>
+                </label>
+                    
+                <label class="field">
+                    <span>Select service</span>
+                    <select name="service" required>
+                        <option value="" selected disabled></option>
+                        <option value="One Bedroom Apartment">One Bedroom Apartment</option>
+                        <option value="Window Cleaning">Window Cleaning</option>
+                        <option value="Residential Cleaning">Residential Cleaning</option>
+                        <option value="Construction Cleaning">Construction Cleaning</option>
+                        <option value="Commercial Cleaning">Commercial Cleaning</option>
+                        <option value="Two Bedroom Apartment">Two Bedroom Apartment</option>
+                    </select>
+                </label>
+                    
+                <label class="field">
+                    <span>Select time</span>
+                    <select name="time" required>
+                        <option value="" selected disabled></option>
+                        <option value="07:00am">07:00am</option>
+                        <option value="08:00am">08:00am</option>
+                        <option value="09:00am">09:00am</option>
+                        <option value="10:00am">10:00am</option>
+                    </select>
+                </label>
+
+                <label class="message-text">
+                    <span>Message</span>
+                    <textarea name="message" placeholder="Type your message" required></textarea>
+                </label>
+
+                <label class="checkbox">
+                    <input type="checkbox" id="accept-terms" required>
+                    <span>I accept the <span class="terms-link">Terms</span></span>
+                </label>
+                
+                <button class="submit-btn">Submit</button>
+            </form>
+        </div>
+
+        <div class="img-wrapper">
+            <img src="/src/assets/diana-cleaning-lady.png" alt="cleaning-lady" class="side-img">
+        </div>
+    </div>
+</section>
+
+<style>
+    .form-container {
+        font-family: "Roboto", sans-serif;
+        background-color: #F7F7F7;
+        padding: 2rem 1rem;
+    }
+
+    .inputs-container {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        align-items: start;
+    }
+
+    .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .field {
+        display: grid;
+        gap: 8px;
+    }
+
+    .field input, .field select, .field textarea {
+        width: 100%;
+        padding: 10px 14px;
+        box-sizing: border-box;
+        border: 1px solid black;
+    }
+
+    .message-text {
+        width: 100%;
+        display: block;
+    }
+
+    .message-text textarea {
+        width: 100%;
+        min-height: 140px;
+        margin-top: 8px;
+        border: 1px solid black;
+    }
+
+    .message-text, .checkbox, .submit-btn {
+        grid-column: 1 / -1;
+    }
+
+    .checkbox {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        width: fit-content;
+        cursor: pointer;
+    }
+
+    .checkbox input {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+
+    .terms-link {
+        cursor: pointer;
+        text-decoration: underline;
+    }
+
+    .submit-btn {
+        justify-self: start;
+        background-color: black;
+        color: white;
+        border-radius: 5px;
+        padding: 16px;
+        border: 1px solid black;
+        cursor: pointer;
+        width: fit-content;
+        transition: background-color 0.3s ease;
+    }
+
+    .submit-btn:hover {
+        background-color: white;
+        color: black !important;
+    }
+
+    .img-wrapper {
+        padding: 0 auto;
+        overflow: hidden;
+    }
+
+    .img-wrapper img {
+        width: 100%;
+        height: auto;
+        min-height: 520px;
+        object-fit: cover;
+        display: block;
+    }
+
+    @media (max-width: 900px) {
+        .inputs-container {
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        .img-wrapper {
+            display: none;
+        }
+
+        .form-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .submit-btn {
+            width: 100%;
+            justify-self: stretch;
+        }
+    }
+</style>
+
+<script type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script type="text/javascript">
+  emailjs.init('GiZ-U-0hXodtELxuZ')
+</script>
+
+<script>
+    const btn = document.querySelector('.submit-btn');
+
+    document.getElementById('quote-form')
+    .addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    btn.textContent = 'Sending...';
+
+    const serviceID = 'default_service';
+    const templateID = 'template_8jw9hhk';
+
+    emailjs.sendForm(serviceID, templateID, this)
+        .then(() => {
+        btn.textContent = 'Sent successfully!';
+        alert('Your quote has been sent successfully!');
+        this.reset()
+        setTimeout(() => {
+            btn.textContent = "Submit"
+        }, 1500)
+        }, (err) => {
+        btn.textContent = 'Err. Try again.';
+        alert('Something went wrong. Please try again.' + JSON.stringify(err));
+        });
+    });
+</script>
