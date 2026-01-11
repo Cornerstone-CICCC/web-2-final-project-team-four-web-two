@@ -2,17 +2,28 @@
 import OurService from "../components/OurService.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import RequestQuote from "../components/RequestQuote.astro";
 ---
 
 <Header />
 <div class="our-service-container">
   <OurService />
 </div>
+<div class="contact-us-container">
+  <RequestQuote />
+</div>
 <Footer />
 
 <style>
   .our-service-container {
-    margin: 50px auto;
-    padding: 0 2rem;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #f7f7f7;
+  }
+
+  .contact-us-container {
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #f7f7f7;
   }
 </style>
