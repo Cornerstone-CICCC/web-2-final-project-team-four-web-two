@@ -1,0 +1,29 @@
+---
+import OurService from "../components/OurService.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import RequestWithoutImage from "../components/RequestWithoutImage.astro";
+---
+
+<Header />
+<div class="our-service-container">
+  <OurService />
+</div>
+<div class="contact-us-container">
+  <RequestWithoutImage />
+</div>
+<Footer />
+
+<style>
+  .our-service-container {
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #f7f7f7;
+  }
+
+  .contact-us-container {
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #f7f7f7;
+  }
+</style>

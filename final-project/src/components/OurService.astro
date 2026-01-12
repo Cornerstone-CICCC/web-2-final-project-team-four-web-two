@@ -1,0 +1,197 @@
+---
+import { Image } from "astro:assets";
+import service01 from "../assets/suzuna-service01.png";
+import service02 from "../assets/suzuna-service02.png";
+import service03 from "../assets/suzuna-service03.png";
+import service04 from "../assets/suzuna-service04.png";
+import service05 from "../assets/suzuna-service05.png";
+import service06 from "../assets/suzuna-service06.png";
+
+const services = [
+  {
+    name: "One Bedroom Apartment",
+    serviceDescription:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.",
+    imageSrc: service01,
+    imageDescription: "One Bedroom Apartment image",
+  },
+  {
+    name: "Window Cleaning",
+    serviceDescription:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.",
+    imageSrc: service02,
+    imageDescription: "Window Cleaning image",
+  },
+  {
+    name: "Residential Cleaning",
+    serviceDescription:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.",
+    imageSrc: service03,
+    imageDescription: "Residential Cleaning image",
+  },
+  {
+    name: "Construction Cleaning",
+    serviceDescription:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.",
+    imageSrc: service04,
+    imageDescription: "Construction Cleaning image",
+  },
+  {
+    name: "Commercial Cleaning",
+    serviceDescription:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.",
+    imageSrc: service05,
+    imageDescription: "Commercial Cleaning image",
+  },
+  {
+    name: "Two Bedroom Apartment",
+    serviceDescription:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.",
+    imageSrc: service06,
+    imageDescription: "Two Bedroom Apartment image",
+  },
+];
+---
+
+<div class="content-wrapper">
+  <div class="head-wrapper">
+    <h2><strong>Our Services</strong></h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+  </div>
+  <div class="service-cards-grid">
+    {
+      services.map((service, index) => (
+        <article class={`service-card ${index >= 3 ? "hidden-card" : ""}`}>
+          <Image
+            src={service.imageSrc}
+            alt={service.imageDescription}
+            class="service-card-image"
+          />
+          <h3>{service.name}</h3>
+          <p>{service.serviceDescription}</p>
+        </article>
+      ))
+    }
+  </div>
+  <button type="button" class="btn-view-all">View All</button>
+</div>
+
+<style>
+  :root {
+    --primary-color: #000;
+    --btn-hover-color: #f0f0f0;
+  }
+
+  .content-wrapper {
+    background-color: #f7f7f7;
+  }
+
+  .head-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .head-wrapper h2 {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  .head-wrapper p {
+    font-size: 1.5rem;
+    font-weight: 400;
+  }
+
+  /* cards style */
+  .service-cards-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 6rem;
+  }
+
+  .service-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: auto;
+    border: 1px solid #a0a0a0;
+    border-radius: 5px;
+  }
+
+  .hidden-card {
+    display: none;
+  }
+
+  .service-card-image {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+
+  .service-card h3 {
+    font-size: 1.5rem;
+  }
+
+  .service-card p {
+    font-size: 1.5rem;
+  }
+
+  .btn-view-all {
+    width: 100%;
+    border: 1px solid #000;
+    border-radius: 5px;
+    background-color: var(--bg-color);
+    margin-top: 6rem;
+    padding: 20px 0;
+    font-size: 1.5rem;
+    transition: ease 0.2s;
+  }
+
+  .btn-view-all:hover {
+    background-color: var(--btn-hover-color);
+  }
+
+  /* desktop design */
+  @media (min-width: 1440px) {
+    .content-wrapper {
+      max-width: 2000px;
+      margin: auto;
+    }
+    .service-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .service-card {
+      display: flex;
+    }
+    .btn-view-all {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  const btnViewAll = document.querySelector(
+    ".btn-view-all",
+  ) as HTMLButtonElement | null;
+  const hiddenCards = document.querySelectorAll(".hidden-card");
+
+  if (btnViewAll) {
+    btnViewAll.addEventListener("click", (e) => {
+      e.preventDefault();
+      hiddenCards.forEach((hiddenCard) => {
+        hiddenCard.classList.remove("hidden-card");
+      });
+      btnViewAll.style.display = "none";
+    });
+  }
+</script>
