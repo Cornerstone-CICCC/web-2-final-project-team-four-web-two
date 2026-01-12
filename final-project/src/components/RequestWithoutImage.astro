@@ -56,10 +56,6 @@
                 <button class="submit-btn">Submit</button>
             </form>
         </div>
-
-        <div class="img-wrapper">
-            <img src="/src/assets/diana-cleaning-lady.png" alt="cleaning-lady" class="side-img">
-        </div>
     </div>
 </section>
 
@@ -72,19 +68,12 @@
 
     .inputs-container {
         max-width: 2000px;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        column-gap: 4rem;
-        align-items: stretch;
-        margin: 100px auto;
-    }
-
-    .quote-wrapper {
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        padding: 0;
+        margin: 0 auto;
+        display: block;
+        gap: 2rem;
+        align-items: start;
+        margin-left: 64px;
+        margin-right: 10px;
     }
 
     .title-wrapper{
@@ -106,7 +95,7 @@
     .form-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 24px;
+        gap: 20px;
     }
 
     .field {
@@ -114,16 +103,13 @@
         gap: 8px;
     }
 
-    .field input, .field select {
-        height: 50px;
-    }
-
     .field input, .field select, .field textarea {
         width: 100%;
         padding: 10px 14px;
         box-sizing: border-box;
-        border: 1.5px solid black;
+        border: 2px solid black;
         border-radius: 8px;
+        height: 48px;
     }
 
     .message-text {
@@ -133,13 +119,10 @@
 
     .message-text textarea {
         width: 100%;
-        max-width: 100%;
         min-height: 140px;
         margin-top: 8px;
-        border: 1.5px solid black;
+        border: 2px solid black;
         border-radius: 8px;
-        box-sizing: border-box;
-        resize: vertical;
     }
 
     .message-text, .checkbox, .submit-btn {
@@ -181,26 +164,10 @@
         color: black !important;
     }
 
-    .img-wrapper {
-        height: 100%;
-    }
-
-    .img-wrapper img {
-        width: 100%;
-        height: auto;
-        min-height: 520px;
-        object-fit: cover;
-        display: block;
-    }
-
-    @media (max-width: 1199px) {
+    @media (max-width: 900px) {
         .inputs-container {
             grid-template-columns: 1fr;
             gap: 24px;
-        }
-
-        .img-wrapper {
-            display: none;
         }
 
         .form-grid {
