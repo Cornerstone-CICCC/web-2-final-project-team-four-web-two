@@ -13,7 +13,7 @@
                 <input type="text" name="comment" required>
             </label>
 
-            <button class="request-btn">Request a quote</button>
+            <button class="request-btn">Request A Quote</button>
         </form>
     </div>
 </section>
@@ -23,6 +23,7 @@
         width: 100%;
         padding: 1.5rem 1rem;
         font-family: "Roboto";
+        box-sizing: border-box;
     }
     
     .comment-container {
@@ -35,7 +36,7 @@
 
     .comment-grid {
         display: grid;
-        grid-template-columns: repeat(3, 296px) auto;
+        grid-template-columns: repeat(3, 1fr) auto;
         align-items: end;
         width: 100%;
         justify-items: stretch;
@@ -71,7 +72,7 @@
         transition: background-color 0.3s ease;
         padding: 0px 20px;
         white-space: nowrap;
-        height: 44px;
+        height: 50px;
         width: 100%;
     }
 
@@ -83,6 +84,7 @@
     @media (max-width: 1199px) {
         .comment-container {
             justify-content: center;
+            width: 100%;
         }
 
         .comment-grid {
@@ -98,6 +100,7 @@
         .request-btn {
             width: 100%;
             margin-top: 10px;
+            font-size: 1rem;
         }
     }
 
