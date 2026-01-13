@@ -1,0 +1,262 @@
+---
+import { Image } from "astro:assets";
+import leslieImg from "../assets/lesile.png";
+import ralphImg from "../assets/ralph.png";
+import annetteImg from "../assets/annette.png";
+import savannahImg from "../assets/savannah.png";
+import linkedinIcon from "../assets/rai-linkedin.svg";
+import twitterIcon from "../assets/rai-x.svg";
+import dribbleIcon from "../assets/rai-dribble.svg";
+
+const teamMembers = [
+  {
+    name: "Leslie Alexander",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
+    image: leslieImg,
+  },
+  {
+    name: "Ralph Edwards",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
+    image: ralphImg,
+  },
+  {
+    name: "Annette Black",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
+    image: annetteImg,
+  },
+  {
+    name: "Savannah Nguyen",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
+    image: savannahImg,
+  },
+];
+---
+
+<section class="our-team-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Our team</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </div>
+
+    <div class="team-grid">
+      {
+        teamMembers.map((member, index) => (
+          <div class={`team-card ${index >= 2 ? "mobile-hidden" : ""}`}>
+            <div class="image-wrapper">
+              <Image
+                src={member.image}
+                alt={member.name}
+                class="member-photo"
+              />
+            </div>
+            <div class="content-wrapper">
+              <h3>{member.name}</h3>
+              <p>{member.description}</p>
+              <div class="social-links">
+                <a href="#" aria-label="LinkedIn">
+                  <Image src={linkedinIcon} alt="LinkedIn" />
+                </a>
+                <a href="#" aria-label="Twitter">
+                  <Image src={twitterIcon} alt="Twitter" />
+                </a>
+                <a href="#" aria-label="Dribble">
+                  <Image src={dribbleIcon} alt="Dribble" />
+                </a>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="view-all-container">
+      <button id="view-all-btn">View all</button>
+    </div>
+  </div>
+</section>
+
+<style>
+  .our-team-section {
+    padding: 4rem 1rem;
+    background-color: #fff;
+    color: #000;
+  }
+
+  .container {
+    max-width: 2000px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .section-header h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .section-header p {
+    font-size: 1rem;
+    color: #333;
+  }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Mobile default */
+    gap: 2rem;
+  }
+
+  /* Card Styles */
+  .team-card {
+    display: flex;
+    flex-direction: column; /* Mobile default */
+    background: #fff;
+    align-items: center; /* Center content on mobile */
+    gap: 1.5rem;
+  }
+
+  .image-wrapper {
+    width: 100%;
+  }
+
+  .member-photo {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    object-fit: cover;
+    aspect-ratio: 1 / 1;
+  }
+
+  .content-wrapper {
+    flex: 1;
+    text-align: center; /* Mobile default */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .content-wrapper h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .content-wrapper p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #333;
+    margin: 0.5rem 0;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center; /* Mobile default */
+    margin-top: 0.5rem;
+  }
+
+  .social-links a {
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+  }
+
+  .social-links img {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* View All Button */
+  .view-all-container {
+    text-align: center;
+    margin-top: 2rem;
+  }
+
+  #view-all-btn {
+    background: #fff;
+    border: 1px solid #000;
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.3s;
+  }
+
+  #view-all-btn:hover {
+    background: #f0f0f0;
+  }
+
+  /* Mobile Logic */
+  .mobile-hidden {
+    display: none;
+  }
+
+  /* Desktop Styles */
+  @media (min-width: 1200px) {
+    .our-team-section {
+      padding: 4rem 5rem;
+    }
+
+    .team-grid {
+      grid-template-columns: 1fr 1fr;
+      column-gap: 2rem;
+      row-gap: 3rem;
+    }
+
+    .team-card {
+      flex-direction: row;
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    .image-wrapper {
+      max-width: 200px;
+      flex-shrink: 0;
+    }
+
+    .content-wrapper {
+      text-align: left;
+      align-items: flex-start;
+      padding-top: 0.5rem;
+    }
+
+    .social-links {
+      justify-content: flex-start;
+    }
+
+    .view-all-container {
+      display: none; /* Hide button on desktop */
+    }
+
+    .mobile-hidden {
+      display: flex; /* Always show all on desktop */
+    }
+  }
+</style>
+
+<script>
+  // Mobile View All Logic
+  const viewAllBtn = document.getElementById("view-all-btn");
+  const hiddenCards = document.querySelectorAll(".mobile-hidden");
+
+  if (viewAllBtn) {
+    viewAllBtn.addEventListener("click", () => {
+      hiddenCards.forEach((card) => {
+        card.classList.remove("mobile-hidden");
+      });
+      viewAllBtn.style.display = "none";
+    });
+  }
+</script>

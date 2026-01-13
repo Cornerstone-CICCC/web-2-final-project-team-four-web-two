@@ -1,0 +1,114 @@
+---
+import { Image } from "astro:assets";
+import menCleanHomeReverse from "../assets/suzuna-cleanHomeMen-reverse.png";
+---
+
+<!-- suzuna - about us component -->
+<div class="content-wrapper">
+  <div class="content-left">
+    <p><strong>About Us</strong></p>
+    <h2>
+      <strong>
+        Let us takecare of all your <br />cleaning service needs.
+      </strong>
+    </h2>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+      varius enim in eros elementum tristique. Duis cursus, mi quis viverra
+      ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.Lorem
+      ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim
+      in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros
+      dolor interdum nulla, ut commodo diam libero vitae erat.Lo
+    </p>
+    <div class="cta-aTag">
+      <a href="/quote" class="btn-request-quote">Request A Quote</a>
+    </div>
+  </div>
+  <div class="content-right">
+    <Image
+      src={menCleanHomeReverse}
+      alt="a men who is cleaning a home"
+      class="menCleanHomeReverse"
+    />
+  </div>
+</div>
+
+<style>
+  :root {
+    --primary-color: #000;
+    --bg-color: #fff;
+  }
+
+  .content-wrapper {
+    padding: 4em 0;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg-color);
+    align-items: center;
+    justify-content: center;
+  }
+
+  .content-left {
+    width: 100%;
+    height: auto;
+  }
+
+  .content-left h2 {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  .content-left p {
+    font-size: 1.25rem;
+    font-weight: 400;
+  }
+
+  .cta-aTag {
+    margin: 3rem 0;
+  }
+
+  .btn-request-quote {
+    text-decoration: none;
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 1rem;
+    margin-right: 1rem;
+    border-radius: 5px;
+    font-weight: 400;
+    transition: ease 0.2s;
+  }
+
+  .btn-request-quote:hover {
+    opacity: 0.8;
+  }
+
+  .content-right {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+  }
+
+  .menCleanHomeReverse {
+    width: 100%;
+    height: auto;
+  }
+
+  /* responsive design */
+  @media (min-width: 1440px) {
+    .content-wrapper {
+      flex-direction: row;
+      justify-content: space-evenly;
+      margin: auto;
+      max-width: 2000px;
+    }
+
+    .content-left {
+      padding: 0 2rem;
+    }
+
+    .content-right {
+      max-width: 750px;
+    }
+  }
+</style>

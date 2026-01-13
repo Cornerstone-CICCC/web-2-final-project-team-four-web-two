@@ -1,0 +1,340 @@
+---
+import { Image } from "astro:assets";
+import raiLogo from "../assets/rai-logo.svg";
+import facebookIcon from "../assets/rai-facebook.svg";
+import instagramIcon from "../assets/rai-insta.svg";
+import twitterIcon from "../assets/rai-x.svg";
+import linkedinIcon from "../assets/rai-linkedin.svg";
+
+const links = {
+  about: [
+    { label: "Home", href: "/" },
+    { label: "About", href: "/about" },
+    { label: "Services", href: "/service" },
+    { label: "Teams", href: "/teams" },
+    { label: "Contact", href: "/contact" },
+  ],
+  services: [
+    { label: "Window", href: "#" },
+    { label: "Residential", href: "#" },
+    { label: "Commercial", href: "#" },
+    { label: "Apartment", href: "#" },
+    { label: "Residential", href: "#" },
+  ],
+  social: [
+    { label: "Facebook", href: "#", icon: facebookIcon },
+    { label: "Instagram", href: "#", icon: instagramIcon },
+    { label: "Twitter", href: "#", icon: twitterIcon },
+    { label: "LinkedIn", href: "#", icon: linkedinIcon },
+  ],
+};
+
+const mobileLinks = [
+  { label: "About", href: "#" },
+  { label: "Project", href: "#" },
+  { label: "Contact", href: "#" },
+  { label: "Services", href: "/service" },
+];
+---
+
+<footer class="footer">
+  <div class="container">
+    <!-- Mobile Content (Visible on small screens) -->
+    <div class="footer-mobile">
+      <div class="brand-centered">
+        <Image src={raiLogo} alt="Ddsgnr Logo" class="logo" />
+      </div>
+
+      <ul class="mobile-nav-list">
+        {
+          mobileLinks.map((link) => (
+            <li>
+              <a href={link.href}>{link.label}</a>
+            </li>
+          ))
+        }
+      </ul>
+
+      <ul class="mobile-social-list">
+        {
+          links.social.map((link) => (
+            <li>
+              <a href={link.href} class="social-link" aria-label={link.label}>
+                <Image src={link.icon} alt={link.label} class="social-icon" />
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <!-- Desktop Content (Hidden on small screens) -->
+    <div class="footer-desktop">
+      <div class="top-section">
+        <div class="brand">
+          <Image src={raiLogo} alt="Ddsgnr Logo" class="logo" />
+          <p class="newsletter-text">
+            Join our newsletter to stay up to date on features and releases.
+          </p>
+          <form class="newsletter-form" onsubmit="event.preventDefault();">
+            <input type="email" placeholder="Enter your email" required />
+            <button type="submit">Subscribe</button>
+          </form>
+          <p class="consent-text">
+            By subscribing you agree to with our <a href="#">Privacy Policy</a> and
+            provide consent to receive updates from our company.
+          </p>
+        </div>
+
+        <div class="links-section">
+          <div class="column">
+            <h3>About Us</h3>
+            <ul>
+              {
+                links.about.map((link) => (
+                  <li>
+                    <a href={link.href}>{link.label}</a>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+          <div class="column">
+            <h3>Services</h3>
+            <ul>
+              {
+                links.services.map((link) => (
+                  <li>
+                    <a href={link.href}>{link.label}</a>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+          <div class="column">
+            <h3>Follow Us</h3>
+            <ul class="social-links">
+              {
+                links.social.map((link) => (
+                  <li>
+                    <a href={link.href} class="social-link">
+                      <Image
+                        src={link.icon}
+                        alt={link.label}
+                        class="social-icon"
+                      />
+                      {link.label}
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Section (Shared) -->
+    <div class="bottom-section">
+      <p class="copyright">&copy; 2023 Ddsgnr. All right reserved.</p>
+      <div class="legal-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Cookies Settings</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 3rem 1rem;
+    font-family: system-ui, sans-serif;
+  }
+
+  .container {
+    max-width: 2000px;
+    margin: 0 auto;
+  }
+
+  /* Utility */
+  .logo {
+    display: block;
+    width: auto;
+    height: 30px;
+  }
+
+  /* Mobile First Visibility */
+  .footer-desktop {
+    display: none !important;
+  }
+
+  .footer-mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+  }
+
+  /* Mobile Navigation */
+  .mobile-nav-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    list-style: none !important;
+    padding: 0;
+    margin: 0;
+  }
+
+  .mobile-nav-list li {
+    list-style: none;
+  }
+
+  .mobile-nav-list a {
+    text-decoration: none;
+    color: #000;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+  /* Mobile Social */
+  .mobile-social-list {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none !important;
+    padding: 0;
+    margin: 0;
+  }
+
+  .social-icon {
+    width: 24px;
+    height: 24px;
+    display: block;
+  }
+
+  /* Desktop Styles */
+  @media (min-width: 1200px) {
+    .footer {
+      padding: 4rem 1rem;
+    }
+
+    .container {
+      padding: 0 5rem;
+    }
+
+    .logo {
+      height: 40px;
+    }
+
+    /* Switch Visibility */
+    .footer-mobile {
+      display: none !important;
+    }
+
+    .footer-desktop {
+      display: block !important;
+    }
+
+    /* Desktop Layout */
+    .top-section {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 3rem;
+      margin-bottom: 4rem;
+    }
+
+    .brand {
+      max-width: 600px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      padding: 0.75rem;
+      border: 1px solid #000;
+      background: transparent;
+    }
+
+    .newsletter-form button {
+      padding: 0.75rem 1.5rem;
+      background: transparent;
+      border: 1px solid #000;
+      color: #000;
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    .links-section {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+    }
+
+    .column h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+
+    .column ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .column li {
+      margin-bottom: 0.75rem;
+    }
+
+    .column a {
+      text-decoration: none;
+      color: #000;
+    }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+  }
+
+  /* Bottom Section (Shared) */
+  .bottom-section {
+    border-top: 1px solid #000;
+    padding-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    font-size: 0.875rem;
+    text-align: center;
+  }
+
+  .legal-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  @media (min-width: 768px) {
+    .bottom-section {
+      flex-direction: row;
+      justify-content: space-between;
+      text-align: left;
+    }
+
+    .legal-links {
+      gap: 1.5rem;
+    }
+  }
+</style>

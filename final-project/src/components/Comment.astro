@@ -1,0 +1,152 @@
+<section class="comment-section">
+  <div class="comment-container">
+    <form id="comment-form" class="comment-grid">
+      <label class="field">
+        <span>Full name</span>
+        <input type="text" name="userName" required />
+      </label>
+      <label class="field">
+        <span>Phone number</span>
+        <input type="text" name="userPhone" required />
+      </label>
+      <label class="message-text"
+        ><span>Comment</span>
+        <input type="text" name="comment" required />
+      </label>
+
+      <button class="request-btn">Request A Quote</button>
+    </form>
+  </div>
+</section>
+
+<style>
+  .comment-section {
+    width: 100%;
+    padding: 1.5rem 1rem;
+    font-family: "Roboto";
+    box-sizing: border-box;
+  }
+
+  .comment-container {
+    display: flex;
+    justify-content: center;
+    padding: 4rem 1rem;
+    max-width: 1115.5px;
+    margin: 0 auto;
+  }
+
+  .comment-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr) auto;
+    align-items: end;
+    width: 100%;
+    justify-items: stretch;
+    gap: 1.8rem;
+  }
+
+  .field,
+  .message-text {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .field span,
+  .message-text span {
+    font-size: 1rem;
+    color: black;
+  }
+
+  .field input,
+  .message-text input {
+    width: 100%;
+    height: 50px;
+    border: 0.5px solid black;
+    border-radius: 5px;
+    padding: 0 15px;
+    box-sizing: border-box;
+  }
+
+  .request-btn {
+    background-color: black !important;
+    color: white !important;
+    border-radius: 5px;
+    border: 1px solid black;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    padding: 0px 20px;
+    white-space: nowrap;
+    height: 50px;
+    width: 100%;
+  }
+
+  .request-btn:hover {
+    background-color: white !important;
+    color: black !important;
+  }
+
+  @media (max-width: 1199px) {
+    .comment-container {
+      justify-content: center;
+      width: 100%;
+    }
+
+    .comment-grid {
+      grid-template-columns: 1fr;
+      width: 100%;
+      max-width: 420px;
+    }
+
+    .field input,
+    .message-text input {
+      width: 100%;
+    }
+
+    .request-btn {
+      width: 100%;
+      margin-top: 10px;
+      font-size: 1rem;
+    }
+  }
+</style>
+
+<script
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+></script>
+
+<script type="text/javascript">
+  emailjs.init("GiZ-U-0hXodtELxuZ");
+</script>
+
+<script>
+  const btn = document.querySelector(".request-btn");
+
+  document
+    .getElementById("comment-form")
+    .addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      btn.textContent = "Sending...";
+
+      const serviceID = "default_service";
+      const templateID = "template_espiwog";
+
+      emailjs.sendForm(serviceID, templateID, this).then(
+        () => {
+          btn.textContent = "Sent successfully!";
+          alert("Your comment has been sent successfully!");
+          this.reset();
+          setTimeout(() => {
+            btn.textContent = "Submit";
+          }, 1500);
+        },
+        (err) => {
+          btn.textContent = "Error. Try again.";
+          alert(
+            "Something went wrong. Please try again." + JSON.stringify(err)
+          );
+        }
+      );
+    });
+</script>
